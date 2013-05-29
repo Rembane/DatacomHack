@@ -1,62 +1,62 @@
 #!/usr/bin/env python2
 
-from collections import defaultdict
-import operator, sys
+import sqlite3, sys
 
-class Post(object):
-    def __init__(self, body='', tags=None, exam=''):
-        self.body = body 
-        self.tags = tags 
-        self.exam = exam 
+def init_db():
+    conn = sqlite3.connect('exams.db')
+    c = conn.cursor()
+    c.execute(u"""CREATE TABLE IF NOT EXISTS post (id INTEGER PRIMARY KEY, body TEXT, exam_id INTEGER)""")
+    c.execute(u"""CREATE TABLE IF NOT EXISTS tag (id INTEGER PRIMARY KEY, name TEXT)""")
+    c.execute(u"""CREATE TABLE IF NOT EXISTS post_tag (id INTEGER PRIMARY KEY, post_id INTEGER, tag_id INTEGER)""")
+    c.execute(u"""CREATE TABLE IF NOT EXISTS exam (id INTEGER PRIMARY KEY, name TEXT)""")
 
-    def __str__(self):
-        return 'Tentamen: %s\nTaggar: %s\n\n%s' % (self.exam, ' '.join(self.tags), self.body)
+    return (conn, c)
 
-class Tag(object):
-    def __init__(self, body):
-        while body.startswith(':'):
-            body = body[1:]
 
-        self.body  = body
-        self.lower = body.lower()
+def generate_db(fn, cursor):
+    utags = {}
+    tags  = []
+    exams = {}
+    cex   = u''
+    txt   = u''
+    lts   = []
 
-    def __str__(self):
-        return '%s' % self.body
+    with open(fn) as fh:
+        for row in fh: 
+            row = unicode(row, 'utf-8')
+            # New post!
+            if row.startswith(u'='):
+                exid = exams.get(cex, False)
+                if not exid:
+                    cursor.execute(u"""INSERT INTO exam(name) VALUES(?)""", (cex,))
+                    exams[cex] = exid = int(cursor.lastrowid)
 
-    def __cmp__(self, other):
-        if self.lower < other.lower:
-            return -1
-        elif self.lower == other.lower:
-            return 0
-        else:
-            return 1
+                cursor.execute(u"""INSERT INTO post(body, exam_id) VALUES(?,?)""", (txt, exid,))
+                tags.append((cursor.lastrowid, lts))
+                for t in lts:
+                    utags[t.lower()] = t
 
-    def __hash__(self):
-        return hash(self.lower)
+                txt = u''
+                cex = u''
+                lts = []
 
-posts = defaultdict(list)
-cex   = ''
-txt   = ''
-lts   = []
+            # New exam!
+            elif row.startswith(u'>'):
+                cex = row.strip(u'> \n')
 
-with open(sys.argv[1]) as fh:
-    for (i,row) in enumerate(fh): 
-        # New post!
-        if row.startswith('='):
-            p = Post(txt, lts, cex)
-            for t in lts:
-                posts[t].append(p)
+            elif row.startswith(u':'):
+                lts = [t.lstrip(':') for t in row.strip().split()]
 
-            txt = ''
-            cex = ''
-            lts = []
+            else:
+                txt += row
+                
+    for (pid,ts) in tags:
+        for t in ts:
+            cursor.execute(u"""INSERT INTO tag(name) VALUES(?)""", (utags[t.lower()],))
+            cursor.execute(u"""INSERT INTO post_tag(post_id, tag_id) VALUES(?,?)""", (pid, cursor.lastrowid))
 
-        # New exam!
-        elif row.startswith('>'):
-            cex = row.strip('> \n')
-
-        elif row.startswith(':'):
-            lts = [Tag(t) for t in row.strip().split()]
-
-for (k,v) in sorted([(k,v) for (k,v) in posts.iteritems()], key=lambda (a,b): len(b)):
-    print k, len(v)
+if __name__ == '__main__':
+    conn, cursor = init_db()
+    generate_db(sys.argv[1], cursor)
+    conn.commit()
+    conn.close()
