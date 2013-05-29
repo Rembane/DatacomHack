@@ -5,9 +5,16 @@ import sqlite3, sys
 def init_db():
     conn = sqlite3.connect('exams.db')
     c = conn.cursor()
+    c.execute(u"""PRAGMA foreign_keys = ON""")
     c.execute(u"""CREATE TABLE IF NOT EXISTS post (id INTEGER PRIMARY KEY, body TEXT, exam_id INTEGER)""")
-    c.execute(u"""CREATE TABLE IF NOT EXISTS tag (id INTEGER PRIMARY KEY, name TEXT)""")
-    c.execute(u"""CREATE TABLE IF NOT EXISTS post_tag (id INTEGER PRIMARY KEY, post_id INTEGER, tag_id INTEGER)""")
+    c.execute(u"""CREATE TABLE IF NOT EXISTS tag (id INTEGER PRIMARY KEY, name TEXT UNIQUE)""")
+    c.execute(u"""CREATE TABLE IF NOT EXISTS post_tag (
+        id INTEGER PRIMARY KEY, 
+        post_id INTEGER, 
+        tag_id INTEGER,
+        FOREIGN KEY(post_id) REFERENCES post(id),
+        FOREIGN KEY(tag_id) REFERENCES tag(id)
+    )""")
     c.execute(u"""CREATE TABLE IF NOT EXISTS exam (id INTEGER PRIMARY KEY, name TEXT)""")
 
     return (conn, c)
@@ -50,10 +57,17 @@ def generate_db(fn, cursor):
             else:
                 txt += row
                 
+    existing_tags = {}
     for (pid,ts) in tags:
         for t in ts:
-            cursor.execute(u"""INSERT INTO tag(name) VALUES(?)""", (utags[t.lower()],))
-            cursor.execute(u"""INSERT INTO post_tag(post_id, tag_id) VALUES(?,?)""", (pid, cursor.lastrowid))
+            tlower = t.lower()
+            tid = existing_tags.get(tlower, False)
+            if not tid:
+                cursor.execute(u"""INSERT INTO tag(name) VALUES(?)""", (t,))
+                tid = cursor.lastrowid
+                existing_tags[tlower] = tid
+
+            cursor.execute(u"""INSERT INTO post_tag(post_id, tag_id) VALUES(?,?)""", (pid, tid))
 
 if __name__ == '__main__':
     conn, cursor = init_db()
