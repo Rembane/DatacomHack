@@ -1,0 +1,1565 @@
+> vt 2010
+
+:OSI :lager :TCP/IP :PDU :tjänster :protokoll 
+1. Internets TCP/IP-modell är liksom OSI-modellen baserad på att dela upp
+kommunikationen i ett antal lager ”layers”.
+(3p)
+a) Vilka är de tre högre lagren i Internets TCP/IP protokollarkitektur?
+b) Vilka är de välkända tjänster och protokoll som ingår i varje lager?
+c) Vilken benämning används för datamängden (s.k. Protocol Data Unit) som
+bearbetas av protokollet vid varje lager i frågan?
+d) Hur skapas ett PDU av ett protokoll? Förklara kortfattat vad som händer med data
+(t.ex från en fil som skall skickas över Internet) när den bearbetas uppifrån och ner
+i protokollstacken för dessa tre lager (på sändarsidan).
+
+===
+
+:checksum :crc
+2. Många av Internets protokoll användar kontrollsumma ”Checksum” för att
+upptäcka bitfel, medan de flesta länkprotokollen användar CRC (Cyclic Redundancy
+Check).
+(2p)
+a) Vad är skillnaderna mellan de två metoderna? Jämför deras tillämpning.
+b) Beskriv kortfattat hur bitfel kan upptäckas med varje metod.
+
+===
+
+:HTTP :prestanda :HTTP1.1
+3. Grundprincipen för protokollet HTTP är att klienten begär i ett GET-meddelande
+att hämta ett objekt identifierad med URL på en webb-server. Servern skickar
+objektets data i respons-meddelande som svar.
+(3p)
+Beskriv tre viktiga mekanismer som avsevärt förbättrar hämtningen av webbsidor och
+dess objekt om både webbläsaren och webbservern använder HTTP version 1.1.
+
+===
+
+:DNS :felsökning
+4. I nedanstående exempel som liknar en verklig situation, misslyckas en användare av
+en nystartad PC-dator att ansluta med webbläsaren till
+http://www.student.chalmers.se. Användaren utför följande kommando för att
+kontrollera datorns IP-konfiguration.
+(2p)
+
+C:\>ipconfig /all
+IP-konfiguration för Windows
+Värddatornamn
+. . . . . . . . . . . . : chalmers-2116fb
+Ethernet-kort nätverksanslutning:
+Anslutningsspecifika DNS-suffix . . : chalmers.se
+Beskrivning
+. . . . . . . . . . . . . : Broadcom NetXtreme 57xx
+Fysisk adress
+. . . . . . . . . . . . . : 00-1B-77-D3-20-B9
+DHCP aktiverat
+. . . . . . . . . . . . . : Ja
+IP-adress
+. . . . . . . . . . . . . : 129.16.214.119
+Nätmask
+. . . . . . . . . . . . : 255.255.252.0
+Standard-gateway
+. . . . . . . . . . . . . : 129.16.212.23
+DHCP-server
+. . . . . . . . . . . . : 129.16.212.24
+DNS-server
+.............:
+
+Undersök noggrannt den ovanstående konfigurationen.
+a) Vad kan problemet huvudsakligen bero på?
+b) Ge en fullständig förklaring till vad som kan vara orsaken till det.
+
+===
+
+:Congestioncontrol :ACK :trippelACK
+Stockningskontroll “congestion control” är en viktig funktion på nätverk för
+datakommunikation. Redogör för denna kontrolltyp på Internet genom att svara på
+följande delfrågor.
+(3p)
+a) Förklara hur trippel duplikat ACK kan förekomma i samband med stockning.
+b) Vad indikerar trippel duplikat ACK?
+c) Hur påverkas tillämpningen av stockningsalgoritmer av trippel duplikat ACK?
+
+===
+
+:Kryptering :Nycklar :symmetriskanycklar :publikanycklar
+Symmetriska och publika krypteringsnycklar kan kombineras för att på säkert sätt
+överföra meddelande mellan A och B över Internet.
+(2p)
+Redogör för hur A kan skicka ett konfidentiellt meddelande till B samtidigt som den
+autentiserar sig till B och dessutom skyddar integriteten av meddelandet.
+
+===
+
+:MAC :WLAN :collisiondetection
+7. IEEE 802.11 MAC (Media Access Control)
+a) Vid kommunikation över trådlösa LAN finns det tre fält för adresser i MAC-
+header på en dataram.
+(2p)
+Vilka enheter adresseras med dessa fält?
+Hur kan sändaren av dataramen ta reda på dessa adresser?
+Ge ett exempel med rätt ordning på adresserna i båda riktningar av normal
+kommunikationen över den trådlösa länken.
+b) IEEE 802.11 accesskontroll är baserad på att undvika kollisioner snarare än att
+försöka upptäcka dem.
+(3p)
+Ange minst två anledningar för varför tekniken att upptäcka kollisioner
+(”Collision Detection”) inte är lämplig för trådlösa LAN.
+Förklara hur kollisioner verkligen kan undvikas med hjälp av de mekanismer
+som används enligt IEEE 802.11 standarder i trådlösa LAN, dels vid sändning
+av ramar med normal storlek och dels vid sändning av långa ramar.
+
+===
+
+:Subnetting
+8. Ett IT-företag som har flera avdelningar, har tilldelats ett CIDR adressblock
+216.18.212.0/23 för sitt nätverk. Eftersom företaget har olika stora avdelningar skall
+nätverket bestå av olika stora subnät, nämligen ett större subnät, två mindre subnät
+och tre små subnät. Ett förslag på uppdelningen av nätverket är redan bearbetat så
+att det stora subnätet skall ha hälften av de tillgängliga IP-adresserna, de två mindre
+subnäten skall ha 60 adresser vardera medan varje subnät av de tre små skall ha 30
+adresser. Resten av adresserna skall användas för 30-bitars subnät till (point-to-
+point) länkar mellan nätverkets routrar.
+(5p)
+Din uppgift är att ange i decimal beteckning IP-adress och nätmask för varje subnät i en
+lösning som du arbetar fram enligt den förslagna uppdelningen. Du kan sammanställa
+svaret med hjälp av en tabell (subnät #, subnät-adress, subnätmask).
+
+===
+
+:NAT :routing
+9. Ett hemnätverk kan ha ett antal datorer med TCP/IP konfiguration. Vanligen har
+hemnätverket en bredbandig anslutning via en Internet-leverantör. Leverantörerna
+brukar tilldela bara en global IP-adress till kundens router
+(3p)
+a) Hur och med vilka adresser kommer hemdatorerna att konfigureras?
+b) Beskriv hur hemroutern kan ge hemdatorerna samtidig tillgång (access) till Internet
+trots att kunden bara får en enda global IP-adress.
+c) Vilka tjänster/funktioner använder routern för ändamålen?
+
+===
+
+:routing :routingtable :accessnet :defaultgateway
+10. De flesta access-nätverken har en router för uppkoppling mot Internet.
+(2p)
+a) Beskriv routingtabellen som en sådan router har för att utföra sin uppgift.
+b) Vad är det som menas med “default gateway” i IP-konfigurationen av en värddator
+i ett sådant nätverk? Vad är det som anges i denna konfigurationsparameter?
+
+===
+
+:Packetloss :Fördröjning 
+11. Internet är byggt på att paketkoppla data mellan de kommunicerande enheterna
+med ansträngningen att göra det på bästa sätt. Dock blir det ibland förlust av paket.
+(5p)
+a) Redogör för hur och var paketförlusten kan inträffa på Internet.
+b) Hur påverkar denna förlust de applikationer som litar sig på Internet för att hämta
+data (hemsidor, filer,..) respektive realtids multimedia (samtal, videokonferens, ..)?
+c) Förklara utförligt de tekniker/mekanismer som används för att ersätta de förlorade
+paketen i båda fallen (data resp. realtids multimedia).
+
+===
+
+:MaximumTransmissionUnit :ServiceSetID :Throughput :Nonce :Jitter
+12. Förklara följande begrepp och termer i sammanhang med deras användning eller
+förekomst i datakommunikationssystem. Förklaringen skall kunna begripas av
+vanlig Internet-användare.
+(5p)
+a) Maximum Transmission Unit
+b) Service Set ID
+c) Throughput
+d) Nonce
+e) Jitter
+
+===
+
+> Vt2009
+
+:Fördröjning :Fördröjningstyper :OSI :lager :BenämningförpaketsombearbetasiprotokollstackenCISCO :HTTP :HTTP1.1 :pipelining :persistent :DNS :ResourceRecord 
+1. Internet och Internets Applikationer
+
+8 poäng
+
+1a) Internet är byggt på att paketkoppla data mellan de kommunicerande enheterna
+med ansträngningen att göra det på bästa sätt. Dock finns inga garantier om
+bandbredd, fördröjning eller förlust av paket.
+(2p)
+i. Vilka är de viktiga fördröjningstyperna som paket är utsatta för på sin väg genom
+Internet mellan slutanvändarna. Förklara kortfattat orsakerna till de olika typerna.
+Vilken av dessa enskilda fördröjningar varierar mest från paket till paket?
+ii. Redovisa konsekvenserna av fördröjningar på leveransen av normal data och av
+strömmande multimedia över Internet. Hur motverkas fördröningen vid uppspelning
+av strömmande multimedia över Internet?
+1b) Både OSI-modellen och Internets TCP/IP-modellen är baserade på att dela upp
+kommunikationen i ett antal lager ”layers”. Nedanstående delfrågor handlar om
+TCP/IP-modellen och dess protokoll.
+(2p)
+i. Vilka är de tre högre lagren i Internets protokollarkitektur? Vilka tjänster och
+protokoll som ingår i varje lager?
+ii. Förklara kortfattat vad som händer med användardata när de tas emot uppifrån och
+ner i protokollstacken. Vilken benämning används för datamängden som bearbetas
+av protokoll vid varje lager?
+1c) HTTP 1.1 kan vara ”persistent” med ”pipelining” eller utan ”pipelining”. Svara
+på de följande delfrågorna förutsatt att en klient skall hämta en webbsida som
+innehåller ytterligare 5 st. objekt från en och samma server.
+(2p)
+i. Vad innebär ”persistent” HTTP för TCP-anslutningar mellan klienten och servern?
+Vilka fördelar med detta HTTP-arbetssätt?
+ii. Beskriv hur webbklienten hämtar webbsidan och de tillhörande objekten såväl utan
+som med ”pipelining”. Vilka fördelar med ”pipelining”?
+1d) Ange fyra typer av de s.k. Resource Records (RR) som är lagrade i databasen på
+en DNS-server. Vilken information innehåller varje typ?
+(2p)
+
+===
+
+:Congestion :Stockning :Flowcontrol :Flödeskontroll :Protokoll :SlowStart :CongestionAvoidance
+3. Stockningskontroll
+
+6 poäng
+
+Stockningskontroll “congestion control” är en viktig funktion på nätverk för
+datakommunikation. Redogör för denna kontrolltypen på Internet genom att svara
+på de följande delfrågorna.
+3a) Hur och var manifesterar sig stockningen på Internet?
+3b) Är det inte samma kontrolltyp som flödeskontroll ”flow control”? Om inte, förklara
+syftet med flödeskontroll.
+3c) Vilket protokoll används och var på Internet implementeras stockningskontrollen?
+2
+3d) Vad är det som indikerar stockningen, sett från sändarens perespektiv?
+3e) Hur tillämpas följande mekanismer; ”Slow Start” och ”Congestion Avoidance” i de
+vanliga implementationerna av stockningskontroll på Internet?
+
+===
+
+:Routing :Subnetting :TCP :UDP
+4. IP-adressering och routing
+
+6 poäng
+
+4a) En ISP har ett CIDR adressblock 193.168.216.0/21 som skall tilldelas olika stora
+subnät, nämligen ett större subnät, två mindre subnät och fyra små subnät. Ge
+förrslag på effektiv uppdelning, om det stora subnätet skall ha IP-adresser för
+1000 värdar ”hosts”, var och ett de två mindre subnäten skall ha adresser för 250
+värdar medan varje subnät av de fyra små skall ha minst 120 adresser. Redovisa
+ditt svar genom att ange en adress och subnätmask för varje IP-subnät.
+(3p)
+4b) Vilka är de två protokoll som används mest i IP-routing mellan routrarna inom
+ett organisations IP-nätverk? Jämför mellan protokollens arbetssätt och
+egenskaper på minst tre punkter.
+(3p)
+
+===
+
+:MAC :Switch :ARPTable :WLAN :Collisiondetection :Collision
+5. Ethernet & Trådlöst LAN
+
+8 poäng
+
+5a) Förklara utförligt hur MAC-adress-tabellen skapas i en Ethernet-switch samt
+hur switchen använder denna tabell för vidarebefordring av Ethernet-trafik.
+5b) Accesspunkten (AP) betraktas som lager-2 nätverksutrustning i trådlösa LAN
+enligt IEEE 802.11 standarder. Vilka funktioner och tjänster som accesspunkten
+tillhandahåller i sitt täckningsområde?
+5c) Ange minst två anledningar till att det är svårt och kanske omöjligt att upptäcka
+kollisioner i trådlösa LAN.
+5d) Beskriv de mekanismer som används enligt IEEE 802.11 standarder för att
+undvika kollisioner i trådlösa LAN, dels vid sändning av ramar med normal
+storlek och dels vid sändning av långa ramar.
+
+===
+
+:Routing :RoutingAlgorithm :LinkState :Dijkstra :RoutingTable
+6. Routing-algoritm och routing-tabell
+
+6 poäng
+
+Figuren nedan visar topologin för ett IP-nätverk som består av åtta noder (routrar)
+markerade med bokstäver ”s, t, u, v, w, x, y och z”. Noderna är anslutna till
+varandra med länkar som visas i figuren där siffrorna bredvid anger de aktuella
+länk-kostnaderna. Routing i detta nätverk skall baseras på länkstatus ”link-state”
+algoritmen.
+(6p)
+
+6a) Vilken information är det som behövs från varje nod till övriga noder vid uppstart?
+6b) Ange minst två egenskaper som används vanligen för att räkna ut länk-kostnaden.
+6c) Använd Dijkstra’s algoritm (inte huvudräkning) för att räkna ut den bästa vägen (med
+minsta kostnad) från nod “v” till alla andra noderna på nätverket. Redovisa dina
+resultat enligt algoritmen steg för steg fram till lösningen.
+6d) Sammansställ resultatet som routing-tabell för nod ”v”.
+6e) Skissera en graf för de bästa vägarna (med minsta kostnad) från nod ”v” till alla andra
+noder i nätverket.
+
+===
+
+:ping :subnet :arp 
+7. IP-kommunikation
+
+6 poäng
+
+I det nedanstående exemplet som liknar en verklig situation, testar en användare IPkommunikationen av en PC-dator ansluten till Chalmers nätverk. Användaren utför de
+följande kommandon i följd med hjälp av kommandotolken i Windows.
+(6p)
+
+C:\>ipconfig /all
+(visas del av svaret)
+
+IP-konfiguration för Windows
+Värddatornamn
+. . . . . . . . . . . . : chalmers-2116fb
+Ethernet-kort nätverksanslutning:
+
+Anslutningsspecifika DNS-suffix . . : chalmers.se
+Beskrivning
+. . . . . . . . . . . . . : Broadcom NetXtreme 57xx
+Fysisk adress
+. . . . . . . . . . . . . : 00-1B-77-D3-20-B9
+DHCP aktiverat
+. . . . . . . . . . . . . : Ja
+IP-adress
+. . . . . . . . . . . . . : 129.16.214.119
+Nätmask
+. . . . . . . . . . . . : 255.255.252.0
+Standard-gateway . . . . . . . . . . . . . : 129.16.212.23
+DHCP-server
+. . . . . . . . . . . . : 129.16.212.24
+DNS-servrar
+. . . . . . . . . . . . . : 129.16.1.53
+129.16.2.53
+C:\ >arp –a
+Inga ARP-poster hittades
+C:\ >ping www.chalmers.se
+Skickar signaler till www.chalmers.se [129.16.221.8] med 32 byte data:
+Svar från 129.16.221.8: byte=32 tid=1ms TTL=251
+Svar från 129.16.221.8: byte=32 tid=3ms TTL=251
+Svar från 129.16.221.8: byte=32 tid=3ms TTL=251
+Svar från 129.16.221.8: byte=32 tid=3ms TTL=251
+Ping-statistik för 129.16.221.8:
+Paket: Skickade = 4, mottagna = 4, Förlorade = 0 (0 %),
+Ungefärligt överföringstid i millisekunder:
+Lägsta = 1 ms, Högsta = 3 ms, Medel = 2 ms
+C:\ >arp -a
+Gränssnitt: 129.16.214.119 --- 0x20002
+Internet-adress
+Fysisk adress
+129.16.212.23
+00-04-23-08-5b-1c
+
+Typ
+dynamisk
+
+Notis: Svara på följande delfrågor med hänvisning till detaljerna i ovanstående exempel.
+7a) Är Chalmers webbserver på samma subnät som PC-datorn eller inte? Motivera ditt svar.
+7b) Förklara hur ARP användes innan datorn kunde utföra ping samt varför innehållet i ARPtabellen såg ut som i ovanstående resultat från kommandot arp –a.
+7c) PING är förkortning av Packet InterNet Groper. Hur fungerar ping? Beskriv konsekvent
+förloppet för ovanstående IP-kommunikationen. Ange också vilka TCP/IP-protokoll och
+tjänster som var delaktiga för att utföra ping.
+
+===
+
+> aug 2009
+
+:socket :TCP :UDP :HTTP :nonPersistent :serial :parallell :DNS :RecursiveRequest :IterativeRequest :TLD :Authority :Local 
+1. Internets Applikationer
+
+8 poäng
+
+1a) Det som kallas för ”sockets” används för att komma åt och leverera tjänster från
+Internets applikationer.
+Vad är det som menas med socket? Hur många sådana ”sockets” skulle en server
+behöva för att tillmötesgå ett ”n” antal klienter samtidigt ifall TCP alt. UDP används
+för transporten? På vad beror skillnaden mellan de två fall? Förklara.
+(2p)
+1b) HTTP kan konfigureras att använda icke-ständiga ”non-persistent” TCPanslutningar.
+Vad kan detta innebära vid nedladdningen av html-basfilen och tillhörande objekt för
+en webbsida, förutsatt att alla dessa objekt ligger på samma server? Vilken inverkan
+gör att tillåta parallella istället för seriella TCP-anslutningar vid denna HTTPkonfiguration? Redogör för dina svar helst med hjälp av rum-tids diagram som visar
+förloppet i kommunikationen mellan klienten och servern vid detta HTTP-arbetssätt.
+Tips: Till din hjälp för att förtydliga dina svar på frågan i (1b) kan du använda
+följande scenario. Ponera att du hittar en intressant länk till en hemsida på en redan
+öppnat webbsida i din dators webbläsare, som du sedan klickar på för att hämta
+hemsidan. Anta också att din dator känner till IP-adressen för webbservern till denna
+hemsida. Låt oss också anta att basfilen innehåller väldigt lite HTML-text med
+referenser till exempelvis tre små objekt på sidan. Eftersom alla objekt antas innehålla
+för lite data betraktas överföringstiden försumbar. Om RTT (Round Trip Time)
+betecknar den tid det tar datapaket från din dator fram till servern och tillbaka kan du
+nu beskriva förloppet med hjälp av hur många RTT krävs det för att hämta alla objekt
+med icke-ständiga TCP-anslutningar.
+(3p)
+1c) Ponera att du startar webbläsaren på en dator i Chalmers studat-nätverk.
+Värddatorns namn är (ju-205-11.studat.chalmers.se). Du matar in i adressfältet på
+webbläsaren följande: http://www.ericsson.com för att hämta den globala
+hemsidan för koncernen Ericsson.
+Beskriv hur och vilka olika DNS-servrar kommer att kontaktas för att ta reda på IPadressen till Ericssons webbserver innan datorn kan skicka något paket till denna
+server. I ditt svar skall användas DNS-termer och begrepp exempelvis; rekursiv eller
+iterativ förfråga och svar samt TLD, auktoritära och lokala servrar.
+(3p)
+
+===
+
+:rdtp :sequenceNumber :Timer :Checksum :TCP :UDP :SequenceNumber :SYNACK :TCPReno :CongestionControl 
+2. Transportprotokollen
+
+8 poäng
+
+2a) Varför använder tillförlitligt data transport protokoll ”s.k. rdtp”:
+1. sekvensnummer och
+2. timers?
+
+(2p)
+
+2b) Kontrollsumman ”Checksum” används av Internet-protokollen TCP så väl UDP.
+Förklara för vilka ändamål samt hur kontrollen utförs av protokollen. Är det någon
+skillnad mellan UDP och TCP vad gäller behandlingen hos mottagaren efter att ha
+genomfört kontrollen? Förklara.
+(2p)
+2c) En värddator A skickar två TCP-segment på varandra till värddator B över en och
+samma TCP-anslutning ”connection”. Det första segmentet skickas med
+sekvensnummer190 och det andra med sekvensnummer 1110. Hur mycket
+applikationsdata finns i det första segmentet? Anta att det första segmentet gått
+förlorat på vägen medan det andra nått fram till B. Hur kommer B att bekräfta
+mottagandet i nästa bekräftelse som skall skickas till A? Med andra ord vilket nummer
+sätter B i fältet för bekräftelsen? Varför?
+(2p)
+2d) Beskriv algoritmen som använder TCP Reno för stockningskontrollen ”Congestion
+Control” på TCP/IP-nätverk. Vilken förbättring gör denna algoritm på själva
+kontrollen jämfört med tidigare implementationer?
+(2p)
+
+===
+
+:subnetting :routing :forwarding :ForwardingTables :VC :VirtualCircuit :Datagram :TCPIP :NAT :DHCP :RIP :OSPF :RoutingAlgorithm 
+3. IP-adressering och routing
+
+8 poäng
+
+3a) Ett nätverk har tilldelats ett CIDR-block av IP-adresser 198.77.48.0/23 för att
+konfigurera värddatorerna och övriga enheter som är anslutna inom nätet. Detta
+nätverk skall delas upp i fyra lika stora subnät.
+Hur många giltiga IP-adresser blir det i varje subnät? Ange i ordning alla fyra subnätadresser. Vad blir subnetmasken i decimal form? Vilken är de första och sista
+tillgängliga IP-adresser för det andra subnätet i ordning?
+(2p)
+3b) Är det någon skillnad mellan “routing” och “forwarding” i en router? Behöver
+routrarna s.k. “forwarding tables” för sin uppgift i båda typerna för
+paketkopplingsnätverk, dvs. för nätverk med virtuella kretsar “VC” och nätverk med
+datagram? Om ditt svar är NEJ, varför? Om ditt svar är JA, beskriv kortfattat dessa
+tabeller för båda typerna av nätverk.
+(2p)
+3c) Ett hemnätverk kan ha ett antal datorer med TCP/IP konfiguration. Vanligen
+har sådant hemnätverk en bredbandig anslutning via en Internet-leverantör.
+Leverantörerna brukar tilldela bara en global IP-adress till kundens router.
+Klargör för hur hemroutern använder DHCP och NAT för att hemdatorerna skall ha
+tillgång till Internet samtidigt.
+3d) De två routingprotokoll som används mest i IP-routing inom nätverk anslutna till
+Internet är; RIP (Routing Information Protocol) och OSPF (Open Shortest Path
+First).
+Vilken routingalgoritm som används av varje protokoll? Beskriv kortfattat
+egenskaperna för varje algoritm samt jämför dessa algoritmer mot varandra med
+avseende på kommunikationskrav och svagheter.
+(2p)
+
+===
+
+
+:Ethernet :CSMA/CD :MAC :Collision :Collisiondetection :CollisionAvoidance :SSID :BSSID :Acknowledgement :WLAN
+4. Ethernet & Trådlöst LAN
+
+8 poäng
+
+4a) Beskriv kortfattat kontrollmekanismer i CSMA/CD som tillämpas av MAC
+protokollet på Ethernet när en station vill sända en ram. Demonstrera också hur
+kollisioner kan uppstå samt hur protokollet hanterar (och minimerar) risken att dessa
+kollisioner upprepas på Ethernet.
+(2p)
+4b) Varför tillämpas inte tekniken att upptäcka kollisioner (”Collision Detection” används
+i Ethernet-LAN) också för Trådlösa LAN utan tekniken för att undvika kollisioner ”
+Collision Avoidance” används istället? Ange minst två anledningar.
+(2p)
+4c) Vad är skillnaden mellan SSID och BSSID i 802.11 Trådlösa LAN? Förklara vad
+varje ID betyder och hur dem används.
+(2p)
+4d) Varför används bekräftelse “Acknowledgement” på mottagna ramar i WLANs men
+inte i trådat Ethernet? Ange minst två motiveringar.
+(2p)
+
+===
+
+:Media :Säkerhet :DefaultGateway :Traceroute
+5. Blandade frågor
+
+8 poäng
+
+5a) I en applikation som använder mediaspelare, fördröjs uppspelningen en viss tid,
+förklara till vilket ändamål görs detta och varför. Dock på andra sidan betraktas en del
+paket förlorat trots att det tillhör multimedia-strömmen men kommer fram lite sent,
+varför?
+(2p)
+5b) För en säker kommunikation mellan A och B över Internet, redogör för hur:
+(i) A kan skicka konfidentiellt ett meddelande till B.
+(ii) A kan skicka ett meddelande till B men tillsammans med åtgärder att autentisera
+sig (sändaren) samt att skydda integriteten av meddelandet.
+(iii) A kan skicka konfidentiellt ett meddelande till B och på samma gång med de
+åtgärderna att autentisera sig (sändaren) samt att skydda integriteten av meddelandet.
+(3p)
+5c) Vad är det som menas med “default gateway” i IP-konfigurationen av en värddator
+med anslutning till Internet? Vad är det som anges i denna konfigurationsparameter?
+(1p)
+5d) Förklara hur programmet traceroute fungerar. Vad kan det användas för? Om du kör
+programmet från din dator till annan värddator, vilken information får du? (2p)
+
+===
+
+> Vt 2010
+
+:TCPIP :OSI :Service :Protocol :Tjänst :Protokoll :PDU :
+Observera att svaren redovisas kortfattat och hänvisas till kursboken för utförligare svar.
+1. Internets TCP/IP-modell är liksom OSI-modellen baserad på att dela upp
+kommunikationen i ett antal lager ”layers”.
+(3p)
+a) Vilka är de tre högre lagren i Internets TCP/IP protokollarkitektur?
+b) Vilka är de välkända tjänster och protokoll som ingår i varje lager?
+c) Vilken benämning används för datamängden (s.k. Protocol Data Unit) som
+bearbetas av protokollet vid varje lager i frågan?
+d) Hur skapas ett PDU av ett protokoll? Förklara kortfattat vad som händer med
+data (t.ex från en fil som skall skickas över Internet) när den bearbetas uppifrån
+och ner i protokollstacken för dessa tre lager (på sändarsidan).
+Se avsnitt 1.5.1 resp. 1.5.2 i kursboken
+
+(Layer 5) Applikation tjänster: Web, filöverföring, domännamn, email, ...
+protokoll: http, ftp, dns, smtp, ...
+(Layer 4) Transport: pålitlig (förbindelseorienterad) transport, TCP
+användardatagram (förbindelselös) transport, UDP
+(Layer 3) Nätverk: förbindelselös datagram leverans (best effort delivery), IP
+(5) Meddelande (message), (4) segment, (3) datagram (packet)
+PDU skapas genom att protokollet lägger header till datamängeden som tas emot
+uppifrån. PDU = header + data
+
+===
+
+:Checksum :CRC 
+2. Många av Internets protokoll användar kontrollsumma ”Checksum” för att
+upptäcka bitfel, medan de flesta länkprotokollen användar CRC (Cyclic
+Redundancy Check).
+(2p)
+a) Vad är skillnaderna mellan de två metoderna? Jämför deras tillämpning.
+b) Beskriv kortfattat hur bitfel kan upptäckas med varje metod.
+Se avsnitt 3.3.2 resp. 5.2.3 i kursboken
+Kontrollsumma: 1’s komplement binär addition av 16-bitars ord (från header, datafält eller
+både och). Mjukvarubaserad. Finns fält för kontrollsumman i header.
+CRC: binär division av lång bitström (data+header) med ett CRC-tal (generator).
+Hårdvarubaserad. Finns fält för FCS (resten av divisionen) i trailer.
+I princip görs samma beräkning (dock olika metoder) hos sändaren såsom mottagaren
+och jämförs mottagarens resultat med vad sändaren har lagt i fältet. Om dessa inte är lika
+konstateras att det har hänt bitfel.
+
+===
+
+:HTTP :GET :Mekanismer :hastighet HTTP1.1
+3. Grundprincipen för protokollet HTTP är att klienten begär i ett GETmeddelande att hämta ett objekt identifierad med URL på en webb-server.
+Servern skickar objektets data i respons-meddelande som svar.
+(3p)
+Beskriv tre viktiga mekanismer som avsevärt förbättrar hämtningen av webbsidor och
+dess objekt om både webbläsaren och webbservern använder HTTP version 1.1.
+Se avsnitt 2.2.2 resp. 2.2.6 i kursboken
+
+-
+
+Behålla TCP-anslutning öppen (persistent connection), tills alla objekt inhämtade,
+Parallell hämtning av objekten länkade till samma server (pipelining),
+Web-caching och villkorligt (conditional) GET.
+
+===
+
+:Troubleshooting :DNS 
+4. I nedanstående exempel som liknar en verklig situation, misslyckas en användare
+av en nystartad PC-dator att ansluta med webbläsaren till
+http://www.student.chalmers.se. Användaren utför följande kommando för att
+kontrollera datorns IP-konfiguration.
+(2p)
+C:\>ipconfig /all
+IP-konfiguration för Windows
+Värddatornamn
+. . . . . . . . . . . . : chalmers-2116fb
+Ethernet-kort nätverksanslutning:
+Anslutningsspecifika DNS-suffix . . : chalmers.se
+Beskrivning
+. . . . . . . . . . . . . : Broadcom NetXtreme 57xx
+Fysisk adress
+. . . . . . . . . . . . . : 00-1B-77-D3-20-B9
+DHCP aktiverat
+. . . . . . . . . . . . . : Ja
+IP-adress
+. . . . . . . . . . . . . : 129.16.214.119
+Nätmask
+. . . . . . . . . . . . : 255.255.252.0
+Standard-gateway
+. . . . . . . . . . . . . : 129.16.212.23
+DHCP-server
+. . . . . . . . . . . . : 129.16.212.24
+DNS-server
+.............:
+Undersök noggrannt den ovanstående konfigurationen.
+a) Vad kan problemet huvudsakligen bero på?
+b) Ge en fullständig förklaring till vad som kan vara orsaken till det.
+
+Saknas konfigurationsparameter om den lokala DNS-servern. DHCP-servern är inte
+konfigurerad med denna option. Webbklienten kan inte översätta namnet
+”www.student.chalmers.se” till en IP-adress och därmed kan den inte skicka några IPpaket (eller åtministone starta en ARP-förfråga).
+
+===
+
+:Congestioncontrol :Congestion :ACKACKACK 
+5. Stockningskontroll “congestion control” är en viktig funktion på nätverk för
+datakommunikation. Redogör för denna kontrolltyp på Internet genom att svara
+på följande delfrågor.
+(3p)
+a) Förklara hur trippel duplikat ACK kan förekomma i samband med stockning.
+b) Vad indikerar trippel duplikat ACK?
+c) Hur påverkas tillämpningen av stockningsalgoritmer av trippel duplikat ACK?
+
+Se avsnitt 3.7 i kursboken
+Vid en kortvarig stockning på en router (en tillfälligt bildad kö på ett interface) på vägen
+mellan TCP-sändare och mottagare. Sändaren håller på att sända ett antal segment i följd
+(från CongWindow) där ett av dem hamnar till den fulla kön och routern kastar bort det,
+men resterande segment släpps efteråt i vägen och når mottagren som i sin tur skickar
+ACKen till sändaren som har samma nästa förväntade sekvensnummer (på det förlorarde
+segmentet). Detta indikerar att nätverket leverar segmenten men endast ett av dem blev
+förlorat pga av mycket kortvarig stockning. I sådan situation behöver inte sändaren gå till
+Slow Start (Tahoe), utan går den istället till Congestion Avoidance (Reno) med ny tröskel
+på halva CongWindow och sedan öka det linjärt.
+
+===
+
+:security :säkerhet :nycklar :keys :hash :publickey :
+6. Symmetriska och publika krypteringsnycklar kan kombineras för att på säkert
+sätt överföra meddelande mellan A och B över Internet.
+(2p)
+Redogör för hur A kan skicka ett konfidentiellt meddelande till B samtidigt som
+den autentiserar sig till B och dessutom skyddar integriteten av meddelandet.
+
+Se avsnitt 8.3 i kursboken
+En lösning kan vara:
+Steg 1: A använder hash-funktion på meddelandet och resultatet signeras med A’s
+privata nyckel (sändar-autentisering). Meddelandet plus det signerade hash-värdet
+behandlas nu i steg 2.
+Steg 2: A krypterar (meddelandet + signerad hash) med egen-vald session (symmetrisk)
+nyckel, samt A krypterar själva symmetriska nyckeln med B’s publika nyckel och skickar
+båda de krypterade delarna.
+[B dekrypterar med sin privata nyckel den andra delen för att få fram den symmetriska
+nyckel för att efteråt dekryptera den första delen och få fram meddelandet+ signerad
+hash. B använder A’s publika nyckel att få fram hash-värdet som sedan jämföras med sitt
+eget hash-resultat (integritet).]
+
+===
+
+
+:MAC :WLAN :CollisionAvoidance :Collisiondetection
+7. IEEE 802.11 MAC (Media Access Control)
+a) Vid kommunikation över trådlösa LAN finns det tre fält för adresser i MACheader på en dataram.
+(2p)
+Vilka enheter adresseras med dessa fält?
+Hur kan sändaren av dataramen ta reda på dessa adresser?
+Ge ett exempel med rätt ordning på adresserna i båda riktningar av normal
+kommunikationen över den trådlösa länken.
+
+Se avsnitt 6.3.3 i kursboken
+Det är tre adressfält som finns i header på MAC-ramen för IEEE 802.11. De första två
+adressfälten används traditionsenligt för mottagarens respektive sändarens MAC-adress
+på den trådlösa länken (dvs. AP eller STA). En tredje adressfält används antingen för den
+som slutligen får ramen eller för den som ramen har kommit från. På detta sätt kan AP
+fungera som mellanhand i kommunikationen mellan stationer på det trådlösa nätet och det
+trådbundna Ethernet.
+En trådlös station STA skickar paket till Internet (via default gateway GW):
+Adress1 APs MAC-adress (känd från beacon och associering)
+Adress2 STAs MAC-adress (inbränt i ROM)
+Adress3 GWs MAC-adress (lärd via ARP)
+En trådlös station tar emot paket från Internet (via default gateway):
+Adress1 STAs MAC adress (som default gateway lärde via ARP och finns I Ethernetramens header som mottagaradress)
+Adress2 APs egen MAC-adress
+Adress3 GWs MAC-adress (från Ethernet-ramens header som sändaradress)
+
+b) IEEE 802.11 accesskontroll är baserad på att undvika kollisioner snarare än
+att försöka upptäcka dem.
+(3p)
+Ange minst två anledningar för varför tekniken att upptäcka kollisioner
+(”Collision Detection”) inte är lämplig för trådlösa LAN.
+Förklara hur kollisioner verkligen kan undvikas med hjälp av de
+mekanismer som används enligt IEEE 802.11 standarder i trådlösa LAN,
+dels vid sändning av ramar med normal storlek och dels vid sändning av
+långa ramar.
+
+Se avsnitt 6.3.2 i kursboken
+Det är svårt att upptäcka kollisioner på den trådlösa länken därför att radiosignalen från en
+annan sändare kan försvagas kraftigt pga. dämpning och fading eller kan skymmas totalt
+av föremål (Hidden Terminal problem – Sändarstationen kan inte upptäcka kollisioner
+med en annan station som är skymd eller långt ifrån så att dess signal är mycket svag). I
+praktiken är det också hårdvarumässigt kostsamt (för radiodelen i det trådlösa kortet) att
+själv sända och samtidigt lyssna på försvagad radiosignal från annan sändare.
+I WLAN löser man problemet genom att undvika kollisioner snarare än att försöka
+upptäcka dem. CSMA/CA mekanismer tillämpas kollektivt så att en STA som vill sända en
+ram med normal storlek, skall lyssna på radiokanalen och se att det är ledig. Är kanalen
+ledig, vänta DIFS, sända hela ramen och vänta på ACK (skickas av mottagare efter
+kortare väntetid SIFS). Är kanalen upptagen, backar STA och startar nedräkning en
+slumpmässigt vald tid när kanalen blir ledig.
+Om stationen har lång ram att sända kan den välja reservation av kanalen från
+AP(RTS/CTS). Där RTS är en kort ram som skickas av stationen STA för att begära
+reservation så att alla närliggande stationer vet om kommande sändning. Om AP svarar
+med CTS då vet alla associerade stationer att kanalen är reserverad för den tid som CTS
+innehåller. STA väntar kort tid SIFS efter CTS-mottagande och sänder ramen utan att
+befara kollision. När AP tar emot ramen bekräftar det efter SIFS med ACK och på så sätt
+vet alla andra stationer att kanalen är återigen ledig att använda.
+
+===
+
+:subnetting
+8. Ett IT-företag som har flera avdelningar, har tilldelats ett CIDR adressblock
+216.18.212.0/23 för sitt nätverk. Eftersom företaget har olika stora avdelningar
+skall nätverket bestå av olika stora subnät, nämligen ett större subnät, två
+mindre subnät och tre små subnät. Ett förslag på uppdelningen av nätverket är
+redan bearbetat så att det stora subnätet skall ha hälften av de tillgängliga IPadresserna, de två mindre subnäten skall ha 60 adresser vardera medan varje
+subnät av de tre små skall ha 30 adresser. Resten av adresserna skall användas
+för 30-bitars subnät till (point-to-point) länkar mellan nätverkets routrar.
+(5p)
+Din uppgift är att ange i decimal beteckning IP-adress och nätmask för varje subnät i
+en lösning som du arbetar fram enligt den förslagna uppdelningen. Du kan
+sammanställa svaret med hjälp av en tabell (subnät #, subnät-adress, subnätmask).
+
+Tredje byte (från vänster) i adressen är 212 decimalt som motsvarar 11010100 binärt där de
+första sju bitarna tillhör prefixen i adressblocket. Genom att använda den sista biten får man
+två stycken lika stora subnät med 8 bitar för hostdelen (254 adresser).
+Subnäten är som följande:
+216.18.212.0/24 är det första subnätet, subnätmask 255.255.255.0 som skall användas för det
+stora subnätet i frågan.
+216.18.213.0/24 är det andra subnätet, subnätmask 255.255.255.0 som skall ytterligare
+subnättas till fyra lika stora subnät med 6 bitar för hostdelen (62 adresser):
+(1) 216.18.213.0/26, subnätmask 255.255.255.192 för det första mindre subnätet
+(2) 216.18.213.64/26, subnätmask 255.255.255.192 för det andra mindre subnätet
+(3) 216.18.213.128/26, subnätmask 255.255.255.192 subnättas ytterligare till två
+mindre subnät med 5 bitar för hostdelen (30 adresser) vilket ger:
+216.18.213.128/27 subnätmask 255.255.255.224 för det första av de tre små subnäten
+216.18.213.160/27 subnätmask 255.255.255.224 för det andra av de tre små subnäten
+(4) 216.18.213.192/26, subnätmask 255.255.255.192 subnättas ytterligare till två
+mindre subnät med 5 bitar för hostdelen (30 adresser) vilket ger:
+216.18.213.192/27 subnätmask 255.255.255.224 för det tredje av de tre små subnäten
+216.18.213.224/27 subnätmask 255.255.255.224 som subnättas ytterligare till 8 st. 30bitars subnät med subnätmask 255.255.255.252 vilket ger:
+216.18.213.224/30, 216.18.213.228/30, 216.18.213.232/30, 216.18.213.236/30,
+216.18.213.240/30, 216.18.213.244/30, 216.18.213.248/30, 216.18.213.252/30,
+
+===
+
+:NAT :DHCP 
+9. Ett hemnätverk kan ha ett antal datorer med TCP/IP konfiguration. Vanligen
+har hemnätverket en bredbandig anslutning via en Internet-leverantör.
+Leverantörerna brukar tilldela bara en global IP-adress till kundens router.
+(3p)
+a) Hur och med vilka adresser kommer hemdatorerna att konfigureras?
+b) Beskriv hur hemroutern kan ge hemdatorerna samtidig tillgång (access) till
+Internet trots att kunden bara får en enda global IP-adress.
+c) Vilka tjänster/funktioner använder routern för ändamålen?
+
+Se avsnitt 4.4 i kursboken
+Hemroutern agerar som DHCP-server och tilldelar IP-adresser till hemdatorerna från ett
+privat CIDR adressblock (t.ex. 192.168.0.0). Routern reserverar den första tillgängliga
+adressen för eget interface mot det lokala nätverket och därmed blir denna adress en
+intern ”default gateway”.
+Hemdatorerna kommunicerar direkt med detta interface för att skicka och ta emot IPpaket till och från Internet. Hemroutern använder sedan NAT funktionen för att ersätta den
+privata sändaradressen i varje utgående paket med sin globala adress samt ersätta
+sändarens portnummer med ett annat portnummer. Denna ersättning upprepas för alla
+paket som kommer från en och samma sändaradress med samma portnummer. NATfunkionen sparar denna information (sändaradress och sändarportnummer + NATportnummer) och skapar en tabell för dessa ersättningar för att användas också i motsats
+riktning när inkommande paket adresserat till hemroutern (som egentligen skall till
+datorerna på hemnätverket) omadresseras och vidarebefordras till det lokala nätet.
+
+===
+
+:RoutingTable :DefaultGateway
+10. De flesta access-nätverken har en router för uppkoppling mot Internet.
+(2p)
+a) Beskriv routingtabellen som en sådan router har för att utföra sin uppgift.
+b) Vad är det som menas med “default gateway” i IP-konfigurationen av en
+värddator i ett sådant nätverk? Vad är det som anges i denna
+konfigurationsparameter?
+
+Routingtabellen består av två självklara vägar, (dvs. routes). Dels en specifik route till eget
+IP-nät som är direktansluten till routerns interface mot access-nätverket. Och dels en
+default route via det interface som routern har uppkopplingen mot Internet.
+”Default gateway” är det närmaste router-interface som har direkt länk med värddatorn på
+samma subnät och som anlitas av denna för vidarebefordran av paket som skall levereras
+utanför eget subnät. Konfigurationsparametern är IP-adressen för detta router-interface
+som ligger på samma subnät.
+
+===
+
+:Packetloss :Multimedia 
+11. Internet är byggt på att paketkoppla data mellan de kommunicerande enheterna
+med ansträngningen att göra det på bästa sätt. Dock blir det ibland förlust av
+paket.
+(5p)
+a) Redogör för hur och var paketförlusten kan inträffa på Internet.
+b) Hur påverkar denna förlust de applikationer som litar sig på Internet för att
+hämta data (hemsidor, filer,...) respektive realtids multimedia (samtal,
+videokonferens, ..)?
+c) Förklara utförligt de tekniker/mekanismer som används för att ersätta de
+förlorade paketen i båda fallen (data resp. realtids multimedia).
+
+Observera att svaren redovisas kortfattat och hänvisas till kursboken för utförligare svar.
+Se avsnitten 7.3.1 och 7.3.3 i kursboken
+Paket som vidarebefordras till ett överbelastat interface på en router, kastas bort om
+bufferten är full och paketförlusten är ett faktum. Lång fördröjning pga långa köer hos
+routrarna innebär också paketförlust t.ex. vid uppspelning av realtids multimedia om paket
+kommer för sent för användning.
+Data är förlust-känslig och applikationer litar sig på TCP för att all data kommer fram till
+mottagaren i rätt ordning och utan glap i byteströmmen. Applikationer för realtids
+multimedia tolererar en viss förlust och kan ersätta enstaka delar av multimediaströmmen
+genom att spela upp kopia av förgående del utan att användaren märker mycket störning.
+TCP, ofta för data, tillämpar omsändning av förlorade packet (med hjälp av timeout, ACK,
+sekvensnummer). För realtids multimedia används RTP tillsammans med UDP. RTP
+sekvensnumrerar och tidsstämplar multimedia paket vilket hjälper applikationen att bl.a.
+upptäcka paketförlust. Applikationen kan använda sig av att lägga en redundant del till
+originella multimediaströmmen enligt en av FEC-metoder (extra kodat block för ett antal
+multimediablock eller låg-hastighet version som redundant del). Interleaving är också ett
+sätt att minska effekten av paketförlust på multimediaströmmen.
+
+===
+
+:MTU :MaximumTransmissionUnit :ServiceSetID :Throughput :Nonce :Jitter
+12. Förklara följande begrepp och termer i sammanhang med deras användning
+eller förekomst i datakommunikationssystem. Förklaringen skall kunna begripas
+av vanlig Internet-användare.
+(5p)
+a) Maximum Transmission Unit
+Det maximala antalet byte (vanligen paketets totala längden) som kan inkapslas i en ram
+(frame) och som det underliggande fysiska nätverket kan hantera över länken, t.ex.
+Ethernet har MTU på 1500 byte. Paket som är större än MTU måste fragmenteras.
+
+b) Service Set ID
+Det är namnet (ett eller två ord) på det trådlösa 802.11 nätverket som identifierar APtillhörighet vilket underlättar för de trådlösa enheterna att välja bland många tillgängliga
+trådlösa nätverk inom ett visst område. Information om SSID finns i klartext med i beacon
+som AP sänder regelbundet.
+
+c) Throughput
+Den effektiva (netto) överföringshastigheten som ett kommunikationsprotokoll eller system
+kan åstakomma vid överföringen av datamängd på en session. Den räknas som den
+totala antalet överförda användardatabitar delat med den totala tiden tills överföring är
+fullbordat.
+
+d) Nonce
+En slumpgenererat binärt tal som används vid autentisering av en slutanvädare. Talet får
+användas av autentiseringsprotokollet bara en gång ”once in a life time”. Nonceanvändning syftar till att verifiera den som påstår sig vara en pålitlig användare och att
+den är aktuell (live).
+
+e) Jitter
+Det är variationen i fördröjningen som drabbar paket över Internet, så att paket tillhörande
+samma multimediaströmmen kommer till mediaspelaren hos mottagare olika fördröjda
+trots att de skickades i konstant takt från sändaren. Fördröjningen är olika pga. olika
+kötider på routrarna mellan sändaren och mottagren. Effekten blir hackning i t.ex. ljud om
+mediaspelaren spelar upp paket som de kommer utan att kompensera för jitter.
+
+===
+
+> aug 2010
+
+:socket :GET :HTTP :stateless :cookies :sessions :DNS 
+1. Internets Applikationer
+
+8 poäng
+
+1a) Det som kallas för ”sockets” används för att komma åt och leverera tjänster från
+Internets applikationer.
+Ponera att en värddator C kör webbserver med portnummer 80 och att två andra
+värddatorer A och B använder varsin webbklient att skicka GET-meddelande till
+servern. Kommer segmenten (som innehåller begäran) från A och B att levereras till
+samma socket på servern? Ge en fullständig förklaring om hur servern hanterar de
+olika klienternas data via socket.
+(2p)
+
+Se avsnitt 2.7.1 i kursboken
+Nej, servern skall ha separata så kallad ”connection socket” för var och en av klienterna.
+Connection socket identifieras med klientens IP-adress och portnummer som sändare och
+serverns IP-adress och portnummer som mottagare
+
+1b) Vad menas med att HTTP server är ”stateless”? Hur kan en webbserver för e-handel
+hålla reda på varje kunds inköplista (kallas kundvagn!) när kunden besöker webbsidorna på servern? Klargör för hur det kan göras med hjälp av s.k. cookies.
+(2p)
+
+Se avsnitt 2.2.4 i kursboken
+Servern håller inte någon historik (state information) om klientens anslutningar och de
+besökta webbsidorna.
+Genom att använda s.k. ”session cookies” och särskilt databas hos e-handeln om sina
+kunder.
+
+1c) Ponera att du startar webbläsaren på en dator i Chalmers studat-nätverk.
+Värddatorns namn är (PC1.studat.chalmers.se). Du matar in i adressfältet på
+webbläsaren följande: http://www.ericsson.com för att hämta den globala
+hemsidan för koncernen Ericsson.
+Beskriv tydligt hur och vilka olika DNS-servrar kommer att kontaktas för att ta reda
+på IP-adressen till Ericssons webbserver innan datorn kan skicka något paket till
+denna server.
+(4p)
+Se avsnitt 2.5.2 och figure 2.21 i kursboken
+Chalmers-datorn är konfigurerad med IP-adresser till de DNS-servrar som datorn i första
+hand skall kontakta på det lokala nätet (studat.chalmers.se). DNS-klienten i datorn
+anropas av webbklienten för att översätta namnet www.ericsson.com till IP-adress.
+DNS-klienten skickar över det lokala nätet en förfråga till den lokala servern om denna
+översättning. Den lokala DNS-servern (är en s.k. cache-only typ) gör hela arbetet på de
+interna värddatorernas vägnar för att kontakta omvärlden och erbjuder på detta sätt ett
+rekursivt svar. Sedan skickar denna server förfrågorna (iterativt). Först en förfråga till en
+root-server om adressen till com TLD-server, sedan en förfråga till TLD-servern om
+adressen till ericsson.com authoritativa DNS-servern och slutligen till authoritativa DNSservern (för ericsson.com) en förfråga om adressen till webbservern
+www.ericsson.com. När den lokala servern nu får svar om webbserverns IP-adress
+skickar den ett slugiltigt svar till värddatorn.
+
+===
+
+:TCP :UDP :SequenceNumber :FastRecovery :CongestionControl :Reno :SlowStart :CongestionAvoidance
+2. Transportprotokollen
+
+8 poäng
+
+2a) Nämn de typerna av transporttjänsten över Internetprotokollet som applikationer kan
+erbjudas? Vilka egenskaper karakteriserar varje typ? Ge exempel på olika Internets
+protokoll som tillhandahåller dessa transporttjänster. Ge exempel på applikation(er)
+som lämpligen använder varje typ.
+(3p)
+
+Se avsnitt 3.1.2 i kursboken
+En pålitlig transporttjänst med TCP som används av http, ftp, smtp, .. (kontrollerad data
+leverans)
+En datagrambaserad transporttjänst med UDP som används av dns, rtp, dhcp, .. (snabb
+och realtidsleverans)
+
+2b) En värddator A skickar två TCP-segment på varandra till värddator B över en
+och samma TCP-anslutning ”connection”. Det första segmentet skickas med
+sekvensnummer 110 och det andra med sekvensnummer 1100.
+Hur mycket applikationsdata finns i det första segmentet? Anta att det första
+segmentet gått förlorat på vägen medan det andra nått fram till B. Hur kommer B att
+bekräfta mottagandet i nästa bekräftelse som skall skickas till A? Med andra ord vilket
+nummer sätter B i fältet för bekräftelse? Varför?
+(2p)
+Se figur 3.37 i kursboken
+Sekvensnumret anger numret på första byte i datafältet på det aktuella sända TCPsegmentet.
+
+1100 – 110 = 990 byte finns i första segmentet.
+Ack-nummer skall vara 110, dvs. begära omsändning av första segmentet.
+
+2c) Beskriv algoritmen ”Fast Recovery”som används i samband med TCP-stockningskontroll. Vilken förbättring gör denna algoritm på själva kontrollen?
+(3p)
+Se avsnitt 3.7 i kursboken
+Reno eliminerar omstart vid ”slow-start” om TCP får indikation på paketförlust i form av
+trippel duplikat Ack och sändar-TCP istället gör en s.k. ”fast recovery” genom att
+omedelbart sända om det saknade paketet utan att behöva vänta på time-out. SändarTCP halverar nuvarande ”congestion window” som ny tröskel och starta en linjär ökning
+”Congestion Avoidance”. Med Reno algoritmen antar man att vid ett trippel duplikat Ack
+är det ett tillfällig förlust på ett segment som de efterföljande segmenten har ändå
+kommit fram, dvs. det är inte allvarlig stockning som orsakade förlusten. .
+
+===
+
+:subnetting :RoutingTable :VC :Datagram :RIP :OSPF :RoutingAlgorithm 
+3. IP-adressering och routing
+
+10 poäng
+
+3a) Ett nätverk har tilldelats ett CIDR-block av IP-adresser 176.88.42.0/23 för att
+konfigurera värddatorerna och övriga enheter som är anslutna inom nätet.
+Ponera att nätverksadministratorn använder två bitar från hostdelen för att dela
+upp nätverket i lika stora subnät.
+Hur många giltiga IP-adresser blir det i varje subnät? Ange i ordning alla subnätadresser. Vad blir subnetmasken i decimal form? Vilka är de första och sista
+tillgängliga IP-adresserna för det första subnätet i ordning?
+(4p)
+Varje subnät skall ha 126 giltiga IP-adresser (27 – 2).
+Med alla nollor i hostdelen (7 bitar efter subnetting) anges subnätets IP-adress, medan med
+alla ettor i hostdelen anges adressen för broadcast inom subnätet. Allt imellan dessa är de
+tillgängliga IP-adresserna.
+De fyra subnäten är: 176.88.42.000/25
+176.88.42.128/25
+176.88.43.000/25
+176.88.43.128/25
+Subnetmasken är:
+
+255.255.255.128
+
+Adressutrymmet för hostadresser från det första subnätet är: 176.88.42.1 → 176.88.42.126
+
+3b) Beskriv innehållet i routingtabellerna för paketkopplingsnätverk, dels. för nätverk med
+virtuella kretsar “VC” och dels för nätverk med datagram. Hur skapas dessa tabeller
+för varje typ av nätverk?
+(2p)
+Se avsnitten 4.2.1 och 4.2.2 i kursboken
+Routingtabeller för VC hänvisar till inkommande och utgående VC-nummer som routern
+har lärt under uppsättningen av VC. För routrar som arbetar med datagram hänvisas till
+destinationsnätverk som kan bäst nås via de utgående länkarna.
+
+3c) Förklara vad var och en av följande protokoll används för; RIP (Routing Information
+Protocol) och OSPF (Open Shortest Path First).
+Vilken algoritm används av varje protokoll? Beskriv kortfattat egenskaperna för varje
+protokoll samt jämför dessa mot varandra med avseende på arbetssättet, pretanda och
+nätverksstorlek.
+(4p)
+Se avsnitten 4.5.1 & 4.5.2 i kursboken
+RIP använder Distance-vector (Bellmans-Ford’s) algoritm som är en distribuerad
+algoritm med vilken räcker det med den information som endast grannroutarrna ger om
+de bästa vägarna. Algoritmen beräknar bästa vägarna iterativt och det tar längre tid för
+att routrarna uppdaterar sig om alla vägar på nätet. Felaktig information från en router
+kan orsaka felaktiga routing-tabeller hos andra routrar (routing-loop & count-to-infinity
+problem).
+OSPF använder Link-state (Dijkstra’s) algoritm som är en global algoritm och som
+kräver kännedom om hela topologin samt kostnaderna för alla länkar. Bästa vägen till
+övriga routrar beräknas av varje router för sig oberoende av övriga routrars
+beräkningar. Kräver mycket utbyte av meddelanden vid initiering men stabiliseras
+snabbt och är mer robust vid händelse av förändrade förhållande på nätet.
+
+===
+
+:ARP :Hub :Switch :Ethernet :LAN :WLAN :MAC :ACK 
+4. Ethernet & Trådlöst LAN
+
+8 poäng
+
+4a) Förklara betydelsen av ARP-användning i lokala nätverk (ex. Ethernet) med
+uppkoppling till Internet. Beskriv hur ARP fungerar när en IP-värddator skall
+kommunicera med en annan värddator inom respektive utanför det lokala nätverket.
+(3p)
+Se avsnitten 5.4.2 i kursboken
+ARP är det protokoll som gör IP-kommunikation möjlig över det underliggande nätverket
+genom att mappa IP-adresser till MAC-adresser som används för att kapsla IP-paket in
+Ethernet ramar. Dessa mappningar sparas i cache som ARP-tabell.
+Om ARP-tabellen är tom eller inga matchande poster hittades kommer värddatorn att först
+kontrollera om adressen för måldatorn är på samma subnät som den själv eller inte.
+Är det på samma subnät broadcastar datorn en ARP-förfråga och får svar med MACaddressen. Värddatorn sparar det i ARP-tabellen och börja sända paket adresserade till
+måldatorn.
+Är det inte på samma subnät, kan datorn inte kommunicera direkt med och därför söker
+sig till subnätets router (standard-gateway) för leverans av IP-paket. Eftersom paketen
+måste kapslas in Ethernets MAC-ramar, behöver datorn ta reda på routerns MAC-adress.
+Och därför kommer datorn att broadcasta en ARP-förfråga så att den som har GW IPadressen skall svara med sin MAC-adress.När datorn får ARP-svar från routern om MACadressen, sparar det i ARP-tabellen och börja sända paket adresserade till måldator men
+kapslas in ramar adresserade till routerns MAC-adress.
+
+4b) Vad är skillnaden mellan att använda hubb och att använda switch istället i Ethernet
+LAN? Förklara hur respektive nätverksutrustning fungerar i lokala nätverk.
+(3p)
+Se avsnitt 5.5.3 i kursboken
+Hubben är flerport repeater (digital försärkare) som tar emot en ram från en port och
+skickar den på alla andra porter utan någon kontroll. Arbetar på lager-1 och halvduplex.
+Alla anslutna noder betraktas tillhörande en och samma kollisiondomän.
+Switchen är en flerport lager-2 brygga som kontrollerar bl.a. Ethernet-ramarnas MACadresser innan de skickas vidare. Switchen skickar vidare en ram till den port där
+mottagares MAC-adress finns med i en MAC-adress-tabell som är skapad med
+självlärning. Switchen kontrollerar (dynamiskt) varje inkommande ram på en switchport
+och läser av sändares MAC-adress i ramens header för att spara den i en MAC-adresstabell för denna port. Switchen använder denna tabell för att avgöra till vilken port skall en
+ram skickas vidare om mottagares MAC-adress finns (är lärt finnas) i portens MACadress-tabell.
+Switchen delar upp Ethernet till mindre kollisiondomäner och kan även eliminera dessa
+samt kan konfigureras med fullduplex.
+
+4c) Varför används bekräftelse “Acknowledgement” på mottagna ramar i WLANs men
+inte i trådat Ethernet? Ange minst två motiveringar.
+(2p)
+Se avsnitt 6.3.2 i kursboken
+Data kan lätt och oftare drabbas av bitfel, störningar och kollisioner över den trådlösa
+radiolänken, och utan Ack kan sändaren inte avgöra om de sända ramarna har kommit
+fram felfritt eller inte. Utebliven positivt Ack ger sändare indikation på detta så att den
+skall försöka sända om data (på länk-nivå) och på så sätt underlätta för högre protokoll
+(t.ex. TCP) att inte behöva sända om data (på end-to-end basis).
+
+===
+
+:jitter :multimedia :MAC :DigitalSignature :security :encryption :ping :icmp 
+5. Blandade frågor
+
+6 poäng
+
+5a) Vad är skillnaden mellan end-to-end fördröjning och s.k. jitter? Förklara vad som
+orsakar paket jitter. Beskriv den metod som används av Internet multimedia
+applikationer för att huvudsakligen motverka effekterna av jitter hos mottagaren.
+Se avsnitt 7.3.1 & 7.3.2 i kursboken
+End-to-end fördröjning är den sammanlagda fördröjning som drabbar paket över Internet
+på vägen mellan slutanvändarna. Det orsakas av olika faktorer som avståndet, prestanda
+på länkar och köar i routrarna melan sändaren och mottagaren.
+Jitter är variationen i fördröjningen som drabbar paket över Internet, så att paket
+tillhörande samma multimediaströmmen kommer till mediaspelaren hos mottagare olika
+fördröjda trots att de skickades i konstant takt från sändaren. Fördröjningen är olika pga.
+olika kötider på routrarna mellan sändaren och mottagren. Effekten blir hackning i t.ex.
+ljud om mediaspelaren spelar upp paket som de kommer utan att kompensera för jitter.
+Uppspelningen av multimedia fördröjs genom att media-spelaren buffrar tillräcklig många
+paket innan för att motverka detta jitter och sedan spelar upp media i jämn takt.
+
+(2p)
+5b) Jämför mellan säkerhetsmetoderna som använder Message Authentication Code
+(MAC) och de som använder digital signature.
+(2p)
+Se avsnitt 8.3.2 & 8.3.3 i kursboken
+MAC autentiserar sändaren samt verifierar integritet på data i meddelandet. Genom att
+hasha ”meddelandet plus en överenskommet hemlig nyckel” och att skicka bara hashen
+plus meddelandet utan kryptering får mottagaren möjligheten att verifiera sändaren med
+hjälp av samma nyckel.
+Digital signatur använder publik-nyckel kryptering genom att sändaren krypterar en hash
+av meddelandet med sin privata nyckel och mottagaren verifierar sändaren med att
+dekryptera med det motsvarande publika nycken.
+
+5c) Förklara hur programmet Packet InterNet Groper (PING) fungerar. Vad kan det
+användas för? Vilka Internets protokoll använder programmet?
+(2p)
+Se avsnitt 4.4.3 i kursboken
+Med ping skickas typ-8 ICMP-meddelande (echo request) till måldator som skall svara
+med typ-0 ICMP-meddelande (echo reply) och ekar tillbaka innehållet (ofta är ASCIItecken från alfabetet). ICMP-meddelanden skickas direkt med IP-paket.
+Programmet gör fler försök och RTT-tiden mäts upp för varje försök. Resultatet sammansställs i en tabell till användaren.
+Programmet används för att verifiera kommunikationen med en måldator på lager-1 till 3,
+dvs. nåbarhet på IP-nivå.
+
+===
+
+> Vt 2011
+
+:IPModel :Layer :PDU :Bah!
+1. Internet-modellen är liksom OSI-modellen baserad på att dela upp funktionerna för
+datakommunikation i ett antal lager ”layers”. Datamängden efter bearbetningen av
+ett protokoll vid varje lager kallas för PDU (Protocol Data Unit).
+(4p)
+1.1 På vilket lager sker host-to-host kommunikation mellan värddatorer anslutna till olika
+fysiska nätverk? Svara med namn och ge ett exempel på protokoll och dess PDU.
+1.2 På vilket lager genomförs dataöverföring mellan två värddatorer anslutna till samma
+fysiskt nätverk? Svara med namn och ge ett exempel på protokoll och dess PDU.
+1.3 Hur skapas PDU av ett protokoll på sändarsidan? Vilka delar av data som utgör PDU?
+1.4 Vad menas med kommunikation mellan peer-to-peer protokoll i två olika värddatorer?
+Hur sker denna kommunikation över Internet? Ge ett utförligt svar med ett exempel på
+protokoll.
+
+===
+
+:Transport :Bah!
+2. Det är huvudsakligen två typer av transporttjänsten och motsvarande protokoll som
+Internets applikationer kan erbjudas.
+(4p)
+2.1 Vilka egenskaper som karakteriserar varje typ av tjänsten?
+2.2 Vilket protokoll som används för varje typ av tjänsten?
+2.3 För varje typ av transporttjänsten ge exempel på applikation(er) som lämpligen
+använder endast ett protokoll av dem och förklara varför.
+2.4 Vad använder transportprotokollet för att hantera dataöverföring mellan applikationer
+på olika värddatorer och likaså kunna leverera data till och från många olika
+applikationer och processer som kör på en och samma värddator? Förklara tydligt och
+basera ditt svar på klient/server applikationer.
+
+===
+
+:HTTP :pipelining :GET :Bah! :HTTP1.1 :Persistent 
+3. Grundprincipen för prtokollet HTTP är att klienten begär i ett GET-meddelande
+om att hämta objekt identifierat med URL på en webbserver. Servern skickar
+objektets data i respons-meddelande som svar. Svara på de följande delfrågorna
+förutsatt att en klient hämtar webbsida som innehåller ytterligare 3 stycken objekt
+på samma server. Både klienten och servern använder HTTP version 1.1.
+(4p)
+För varje delfråga, kombinera ditt svar med att skissera rum-tids diagram som visar
+förloppet i kommunikationen mellan klienten och servern.
+3.1 Vad innebär ”persistent” HTTP och vad är syftet med detta HTTP-arbetssätt?
+3.2 Beskriv hur webbklienten hämtar webbsidan och de tillhörande objekten utan
+”pipelining”.
+3.3 Beskriv hur webbklienten hämtar webbsidan och de tillhörande objekten med
+”pipelining”.
+3.4 Vilka fördelar finns det med ”pipelining”?
+
+===
+
+:DNS :nslookup :Wireshark 
+4. En användare vid en dator ansluten till Internet gör en DNS-förfråga med hjälp av
+nslookup. Under utförandet av nslookup fångas DNS-paketen med hjälp av
+programmet Wireshark och resultaten visas i den nedanstående figuren. Studera
+noggrant den information som Wireshark framställer för att förklara förloppet i
+DNS-kommunikation genom att svara på de följande delfrågorna.
+(4p)
+
+4.1 För paket nr. 5 (visas som första DNS-paket i paket-listan):
+Till vilken DNS-server skickades det första DNS-paketet? Vems IP-adress som är
+mottagaren? Vilken DNS-information är det som frågas om? Vad var svaret som
+datorn fick på denna förfråga? Beskriv utförligt.
+4.2 För paket nr. 10 (visas som sista DNS-paket i paket-listan):
+Från vilken DNS-server (namn) skickades det sista DNS-paketet? Vilka olika delar av
+DNS-information innehåller detta paket? Beskriv utförligt.
+4.3 Vilken DNS-information frågade användaren om med hjälp av nslookup? Ett plus om
+du anger hela nslookup kommandot som användaren utfört på sin dator.
+
+===
+
+:CongestionControl :ACKACKACK :CongestionAlgorithm :Algorithm :TransmissionRound
+5. Stockningskontroll “congestion control” är en viktig kontrollfunktion på Internet.
+Redogör för denna kontrolltypen genom att svara utförligt på de följande
+delfrågorna.
+(4p)
+5.1 På vilket sätt får sändaren indikation om en allvarlig stockning?
+5.2 Hur påverkas tillämpningen av stockningsalgoritmer av trippel duplikat ACK?
+5.3 Med hjälp av dina rätta svar på de ovanstående frågorna, skall du redogöra för ”de
+mest använda” kontrollmekanismer och stockningsalgoritmer på Internet genom att
+förklara tydligt och konsekvent vad som händer och varför vid varje
+sändningsomgång (transmission round) enligt den nedanstående figuren. Anta att alla
+de sända segmenten är av samma storlek.
+
+===
+
+:WLAN :WLANAck
+6. Förklara hur och varför används bekräftelse (Acknowledgement) på de mottagna
+ramarna i WLAN 802.11 men inte i Ethernet 802.3. Ange minst två anledningar.
+(2p)
+
+===
+
+:MAC :BSSID :WLAN :ARP
+7. Vid kommunikation över trådlösa LAN enligt 802.11 standard sänder en trådlös
+station en ARP-förfråga till subnetäts standard-gateway och får ett svar via den
+associerande accesspunkten som har BSSID = 00-26-5A-30-34-92. MAC-adressen för
+den trådlösa stationen är 00-1B-77-D3-20-B9 och MAC-adressen för standardgateway är 00-04-23-08-5B-1C.
+(2p)
+7.1 Ange i ordning MAC-adresserna i 802.11-ramen som innehåller ARP-förfrågan.
+7.2 Ange i ordning MAC-adresserna i 802.11-ramen som innehåller ARP-svaret.
+
+===
+
+:Routing :LinkState :Dijkstra :RoutingTable 
+8. Figuren nedan visar topologin för ett IP-nätverk som består av åtta noder (routrar)
+markerade med bokstäver ”s, t, u, v, w, x, y och z”. Noderna är anslutna till
+varandra med länkar som visas i figuren där siffrorna bredvid anger de aktuella
+länk-kostnaderna. Routing i detta nätverk skall baseras på länkstatus ”link-state”
+algoritmen.
+(4p)
+
+8.1 Använd Dijkstra’s algoritm (inte huvudräkning) för att räkna ut den bästa vägen (med
+minsta kostnad) från nod “x” till alla andra noderna på nätverket. Redovisa dina
+resultat med en tabell enligt algoritmen och steg för steg fram till lösningen.
+8.2 Sammansställ resultatet som routing-tabell för nod ”x”.
+8.3 Skissera en graf (topologi-diagram) för de bästa vägarna (med minsta kostnad) från
+nod ”x” till alla andra noder i nätverket.
+
+===
+
+:StandardGateway :DefaultRoute :Routing :RoutingTable
+9. En access-router kopplar ett Ethernet LAN; som består av ett antal datorer och
+servrar, till Internet via en point-to-point seriell anslutning mot ISP.
+Inernetleverantören har tilldelat adressen 213.66.224.250/30 för routerns seriella
+interface. Routern deltar inte i någon dynamisk routingprocess utan det räcker med
+att konfigureras med statisk ”default route”. Anta att en dator i det lokala nätverket
+har följande IP-konfiguration.
+(4p)
+IP-adress
+. . . . . . . . . . . . . : 213.66.224.113
+Nätmask
+. . . . . . . . . . . . . : 255.255.255.192
+Standard-gateway . . . . . . . . . : 213.66.224.65
+9.1 Vad är det som menas med “standard-gateway” i IP-konfigurationen av denna dator?
+9.2 Vad är det som har den angivna IP-adressen i denna konfigurationsparameter?
+9.3 Ange routingtabellen för denna router genom att göra en lista enligt följande.
+Destination
+
+Mask
+
+Nästa hopp
+
+Via interface
+
+===
+
+:subnetting 
+10. En ISP har ett oanvänt CIDR-adressblock 201.94.112.0/21. En kund i form av ett
+nytt IT-företag vill ha ett prefix för sitt planerade nätverk. Företaget skall ha flera
+avdelningar. Eftersom företaget har olika stora avdelningar skall nätverket bestå av
+olika stora subnät, nämligen två större subnät, tre mindre subnät och ett litet subnät.
+Du har anlitats av både ISP och företaget för att effektivt bearbeta ett förslag på IPadressering av nätverket så att varje stort subnät skall ha utrymme för 125 IPadresser, vart och ett av de tre mindre subnäten skall ha 60 adresser medan det
+minsta subnätet skall ha 30 adresser.
+(4p)
+10.1 Din första uppgift är att förslå ISP att välja lämpligt prefix från adressblocket som
+tillräckligt täcker företagets behov av IP-adresser. Ange CIDR-presentation av
+företagets nätverksadress som du förslagit.
+10.2 Din nästa uppgift är att ange i decimal beteckning IP-adress och subnätmask för
+varje subnät (motsvarande avdelningar) i den lösning som du arbetar fram.
+10.3 De adresser som blir otilldelade skall användas för 30-bit subnät till (point-to-point)
+länkarna mellan nätverkets routrar. Redovisa i decimal beteckning IP-adress och
+subnätmask för sådana subnät.
+
+===
+
+:MaximumSegmentSize :MSS Nonce :Beacon :Jitter
+11. Förklara följande begrepp och termer i sammanhang med deras användning eller
+förekomst i datakommunikationssystem. Förklaringen skall kunna begripas av
+vanlig Internet-användare.
+(4p)
+a) Maximum Segment Size (MSS)
+
+b) Nonce
+c) Beacon
+d) Jitter
+
+===
+
+> Vt 2012
+
+:Jitter :Multimedia :RTP 
+1. Internet är byggt på att förmedla data i paket mellan de kommunicerande
+enheterna med målet att göra det på bästa sätt. Dock finns det inga garantier
+om bandbredd, fördröjning eller förlust; vilka multimedia applikationer kan
+behöva vid överföring över Internet.
+(5p)
+1.1 Vad menas med ”jitter” när det gäller överföringen av multimedia över Internet?
+Förklara vad som orsakar paket-jitter.
+
+(2)
+
+1.2 Hur kan effekterna av jitter motverkas vid uppspelning av strömmande multimedia
+hos mottagaren?
+(1)
+1.3 Ange minst två anledningar till att protokollet RTP (Real-time Transport Protocol)
+behövs för paketering (packetization) och transport av interaktiv realtids Internetapplikationer som t.ex. IP-telefoni.
+(2)
+
+===
+
+:TCP :UDP :Transport :Protocol :Socket 
+2. Det är huvudsakligen två typer av transporttjänster och motsvarande protokoll
+som Internet-applikationer kan erbjudas.
+(5p)
+2.1 Ange vilka egenskaper som karakteriserar varje typ.
+
+(1)
+
+2.2 Vilket protokoll används för varje typ?
+
+(1)
+
+2.3 Ge exempel på applikation(er) som lämpligen använder vart och ett av protokollen och
+förklara varför.
+(1)
+2.4 Vad är det som menas med ”socket”? Om en Internet-applikation använder modellen
+klient/server, hur många ”sockets” skulle servern ha om ”n” antal klienter betjänas
+samtidigt? Ditt svar skall baseras på ifall vart och ett av transportprotokollen
+används. På vad beror skillnaden? Förklara.
+(2)
+
+===
+
+:Ethernet :WLAN :MAC :AP :WLANAck 
+3. Ethenet och Trådlöst LAN
+
+(6p)
+
+3.1 Förklara utförligt hur MAC-adress-tabellen skapas i en Ethernet-switch samt hur
+switchen använder denna tabell för vidarebefordring av Ethernet-trafik.
+(2)
+3.2 Accesspunkten (AP) betraktas som lager-2 nätverksutrustning i trådlösa LAN enligt
+IEEE 802.11 standarder. Ange vilka funktioner och tjänster som accesspunkten
+tillhandahåller i sitt täckningsområde.
+(2)
+3.3 Ange minst två anledningar till varför det används bekräftelse (Acknowledgement) vid
+överföring av dataramar på trådlösa LAN enligt IEEE 802.11 standard men inte på
+Ethernet IEEE 802.3. Klargör fördelen med denna användning av Ack.
+(2)
+
+===
+
+:CongestionControl :Congestion :ACKACKACK 
+4. Stockningskontroll “congestion control” är en viktig kontrollfunktion på
+Internet. Redogör för denna kontroll genom att svara utförligt på de följande
+delfrågorna.
+(8p)
+4.1 Hur och var manifesterar sig stockningen på Internet?
+
+(1)
+
+4.2 Vilket protokoll och vilka algoritmer som används?
+
+(1)
+
+4.3 Var på Internet implementeras stockningskontrollen?
+
+(1)
+
+4.4 På vilket sätt får sändaren indikation om en allvarlig stockning?
+
+(1)
+
+4.5 Förklara den förbättring i stockningsalgoritmen vid trippel duplikat ACK.
+
+(1)
+
+4.6 Redogör för kontrollmekanismerna genom att förklara kortfattat vad som händer
+och varför vid varje sändningsomgång enligt den nedanstående figuren. Anta att alla
+de sända segmenten är av samma storlek.
+(3)
+ 
+===
+
+:Wireshark :DNS :nslookup 
+5. En användare vid en dator ansluten till Internet gör en DNS-förfråga med hjälp
+av kommandot nslookup. Under utförandet av nslookup fångas DNS-paketen med
+hjälp av programmet Wireshark och resultatet visas i den nedanstående
+figuren. Studera noggrant den information som Wireshark framställer för att
+förklara förloppet i DNS-kommunikation genom att svara på de följande
+delfrågorna.
+(4p)
+ 
+5.1 För paket nr. 217 (visas som första DNS-paket i paket-listan), till vilken DNSserver skickades det första DNS-paketet? Vilken typ av server är det?
+(1)
+5.2 Vilken DNS-information efterfrågade användaren med hjälp av nslookup? Ange hela
+nslookup kommandot som användaren utfört på sin dator.
+(1)
+5.3 För paket nr. 218 (visas som andra DNS-paket i paket-listan), vilka olika delar av
+DNS-information innehåller detta paket? Beskriv utförligt.
+(1)
+5.4 Är svaret det som användaren frågade efter eller inte? Förklara.
+
+===
+
+:subnetting
+6. En ISP har ett oanvänt CIDR adressblock 198.77.48.0/20. En kund i form av ett
+nytt IT-företag vill ha ett prefix för sitt planerade nätverk. Företaget har
+flera avdelningar. Eftersom avdelningarna är olika stora skall nätverket bestå
+av olika stora subnät, nämligen ett större subnät, två mindre subnät och tre
+små subnät. Du har anlitats av både ISP och företaget för att effektivt bearbeta
+ett förslag på IP-adressering av nätverket så att det stora subnätet skall ha
+utrymme för 250 IP-adresser, de två mindre subnäten skall ha 60 adresser
+vardera medan varje subnät av de tre små skall ha 30 adresser.
+(6p)
+6.1 Din första uppgift är att förslå för ISP att välja lämpligt prefix från adressblocket som
+tillräckligt täcker företagets behov av IP-adresser. Ange CIDR-presentation av
+företagets nätverksadress som du förslagit.
+(1)
+6.2 Din nästa uppgift är att ange i decimal beteckning IP-adress och subnätmask för varje
+subnät (motsvarande avdelningar) i den lösning som du arbetar fram.
+(3)
+6.3 De adresser som blir otilldelade skall användas för 30-bit subnät till (point-to-point)
+länkarna mellan nätverkets routrar. Redovisa i decimal beteckning IP-adress och
+subnätmask för sådana subnät.
+(2)
+
+===
+
+:dijkstra :Routing :RoutingAlgorithm :LinkState :RoutingTable 
+7. Figuren nedan visar topologin för ett IP-nätverk som består av åtta noder (routrar)
+markerade med bokstäver ”s, t, u, v, w, x, y och z”. Noderna är anslutna till varandra
+med länkar som visas i figuren där siffrorna bredvid anger de aktuella länkkostnaderna. Routing i detta nätverk skall baseras på ”link-state” algoritmen.  (6p)
+
+7.1 Vilken information är det som behövs från varje nod till övriga noder vid uppstart?
+(1)
+7.2 Ange minst två egenskaper som vanligen används för att räkna ut länk-kostnaden.
+(1)
+7.3 Använd Dijkstra’s algoritm (inte huvudräkning) för att räkna ut den bästa vägen (med
+minsta kostnad) från nod “s” till alla andra noderna på nätverket. Redovisa dina
+resultat enligt algoritmen steg för steg fram till lösningen.
+(2)
+7.4 Sammansställ resultatet som routing-tabell för nod ”s”.
+7.5 Rita en graf (topologibild) för de bästa vägarna (med minsta kostnad) från nod ”s” till
+alla andra noder i nätverket.
+
+===
+
+> Omtenta i datakommunikation EDA343/DIT420
+
+:socket :GET :HTTP :Cache :TCP
+1. Internets applikationer
+
+4p
+
+1a) Det som kallas för ”sockets” används för att komma åt och leverera tjänster från
+Internets applikationer.
+Ponera att en värddator C kör webbserver med portnummer 80 och att två andra
+värddatorer A och B använder varsin webbklient för att skicka GET-meddelande till
+servern. På servern C, beskriv hur och vilka sockets som skall användas för att ta emot
+GET-meddelanden och för att skicka svar till klienterna. Kommer segmenten (som
+innehåller begäran) från A och B att levereras till samma socket på servern? Ge en
+fullständig förklaring om hur servern hanterar de olika klienternas data via sockets.
+(2p)
+1c) Den s.k. web-caching har fått större användning på Internet med vissa fördelar.
+Kan web-caching minska hämtningsfördröjning för alla objekt som en användare
+skulle begära eller bara en del av dessa objekt?
+(2p)
+
+===
+
+:HTTP :FTP :SMTP :TCP :UDP :DNS :FlowControl :CongestionControl 
+2. Transportprotokollen
+
+10 p
+
+2a) Många Internets protokoll på applikationslager som HTTP, FTP och SMTP
+använder TCP men inte UDP.
+Hur skulle dessa applikationer kunna vara möjliga om UDP skulle vara det enda
+protokollet som man har för transporttjänster på Internet?
+(1p)
+2b) Vilket transportprotokoll som DNS huvudsakligen använder? Förklara varför.
+Vänligen basera ditt svar på den diskussion som kursboken tar upp för ändamålet.
+(2p)
+2c) Vad är syftet med flödesreglering ”flow control”?
+Vad är syftet med stockningskontroll ”congestion control”?
+Vad är skillnaden mellan dessa kontrollmekanismer?
+
+(2p)
+2d) Förklara hur hanterar TCP flödesreglering på Internet. Beskriv också den metod som
+tillämpas.
+(2p)
+2e) Beskriv hur hanterar TCP stockningskontroll på Internet. Beskriv också den metod
+som tillämpas.
+Vad är det grundläggande synsättet som denna metod är baserad på?
+(3p)
+
+===
+
+:subnetting :Fördröjning 
+3. IP addressing och routing
+
+8p
+
+3a) En ISP har ett oanvänt CIDR adressblock 193.168.240.0/20. En kund i
+form av ett nytt IT-företag vill ha ett prefix för sitt planerade nätverk.
+Företaget skall ha flera avdelningar. Eftersom företaget har olika stora
+avdelningar skall nätverket bestå av olika stora subnät, nämligen ett större
+subnät, två mindre subnät och tre små subnät. Du har anlitats av både
+ISP och företaget för att effektivt bearbeta ett förslag på IP-adressering
+av nätverket så att det stora subnätet skall ha utrymme för 250 adresser,
+de två mindre subnäten skall ha 60 adresser vardera medan varje subnät
+av de tre små skall ha 30 adresser.
+(5p)
+Din första uppgift är att förslå ISP att välja lämpligt prefix från adressblocket
+som tillräckligt täcker företagets behov av IP-adresser. Ange CIDRpresentation av adressen som du förslagit för företagets nätverk.
+Din nästa uppgift är att ange i decimal beteckning IP-adress och subnätmask för
+varje subnät (motsvarande avdelningar) i den lösning som du arbetar fram.
+De adresser som blir otilldelade skall användas för 30-bit subnät till (point-topoint) länkarna mellan nätverkets routrar. Redovisa i decimal beteckning IPadress och subnätmask för dessa subnät.
+3b) Beskriv de olika fördröjningstyperna som tillkommer vid överföringen av data över
+paketkopplingsnätverk (t.ex. Internet). Ange vad som orsakar varje fördröjningstyp.
+(2p)
+Hur påverkar routrarna den totala fördröjningstiden som drabbar paket över Internet?
+(1p)
+
+===
+
+:Ethernet :WLAN :ARP :CSMA/CA :CSMA/CD 
+4. Ethernet & Trådlöst LAN
+
+10 p
+
+4a) Förklara betydelsen av ARP-användning i lokala nätverk (ex. Ethernet) med
+uppkoppling till Internet. Beskriv hur ARP fungerar när en IP-värddator skall
+kommunicera med en annan värddator inom respektive utanför det lokala nätverket.
+(3p)
+4b) På ett hög-hastighets Ethernet LAN med en viss bithastighet, är det möjligt att varje
+ansluten dator kan sända kontinuerligt med denna hastighet?
+(2p)
+4c) Beskriv protokollen CSMA/CA och CSMA/CD som används för att ansluta fler
+enheter i ett lokalt nätverk.
+(3p)
+Vad är huvudskillnaden mellan dessa protokoll i deras arbetssätt och funktionalitet?
+(1p)
+Är båda protokollen lämpliga att användas för trådat och trådlösa nätverk? Varför eller
+varför inte?
+(1p)
+
+===
+
+:Jitter :Multimeta :DefaultGateway :DefaultRoute :Traceroute
+5. Blandade frågor
+
+8p
+
+5a) Vad menas med ”jitter” när det gäller multimedia över Internet? Förklara vad som
+orsakar paket-jitter. Beskriv den metod som används av Internet multimedia
+applikationer för att huvudsakligen motverka effekterna av jitter hos mottagaren.
+(2p)
+5b) Vad menas med ”default gateway” i IP-konfigurationen av en värddator ansluten till
+Internet? Vad är det som anges med denna konfigurationsparameter?
+(2p)
+5c) Vad menas med ”default route” i en routingtabell av en IP-router? Ange den decimala
+beteckningen för sådan route.
+(2p)
+5d) Förklara hur programmet traceroute fungerar. Vad kan det användas för? Vilka
+Internets protokoll och medellande använder programmet?
+(2p)
+
